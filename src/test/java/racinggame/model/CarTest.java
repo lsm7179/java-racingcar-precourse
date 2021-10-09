@@ -28,4 +28,19 @@ public class CarTest {
         assertThat(car.getName()).isEqualTo(name);
     }
 
+    @DisplayName("입력값이 4이상이면 전진하는 기능 검증")
+    @Test
+    void name() {
+        Car car = new Car("");
+        assertThat(car.getDistance()).isEqualTo(0);
+        car.goOrStop(4);
+        assertThat(car.getDistance()).isEqualTo(1);
+
+        car = new Car("");
+        assertThat(car.getDistance()).isEqualTo(0);
+        car.goOrStop(9);
+        assertThat(car.getDistance()).isEqualTo(1);
+
+
+    }
 }
