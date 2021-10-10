@@ -3,6 +3,7 @@ package racinggame.model;
 import nextstep.test.NSTest;
 import nextstep.utils.Randoms;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 
@@ -31,7 +32,8 @@ public class CarsTest{
         assertThat(cars.getSize()).isEqualTo(3);
     }
 
-    @DisplayName("자동차들을 전진하는 기능 검증")
+    @DisplayName("자동차들을 4이상에서 전진하는 기능 검증")
+    @RepeatedTest(100)
     @Test
     void moveCars() {
         List<Car> carList = new ArrayList<Car>(Arrays.asList(new Car("lsm"),new Car("test"),new Car("fox")));
@@ -40,9 +42,13 @@ public class CarsTest{
         try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
             mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
                     .thenReturn(MOVING_FORWARD);
+            cars.move();
+            assertThat(cars.getMaxDistance()).isEqualTo(1);
+
+            cars.move();
+            assertThat(cars.getMaxDistance()).isEqualTo(2);
         }
-        cars.move();
-        assertThat(cars.getMaxDistance()).isEqualTo(1);
+
     }
 
 
