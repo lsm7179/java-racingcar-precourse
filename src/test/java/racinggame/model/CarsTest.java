@@ -16,8 +16,8 @@ import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mockStatic;
 
 public class CarsTest {
-    private static final int MOVING_FORWARD = 4;
-    private static final int STOP = 3;
+    private final int MOVING_FORWARD = 4;
+    private final int STOP = 3;
 
     @DisplayName("자동차들을 받는 클래스 생성 검증")
     @Test
@@ -70,5 +70,20 @@ public class CarsTest {
 
     }
 
+    @DisplayName("자동차들의 실행 결과를 출력하는 기능")
+    @Test
+    void CarsReport() {
+        List<Car> carList = new ArrayList<Car>(Arrays.asList(new Car("lsm"), new Car("test")));
+        Cars cars = new Cars(carList);
+        try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
+            mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
+                    .thenReturn(MOVING_FORWARD,STOP,MOVING_FORWARD,STOP);
 
+            cars.move();
+            assertThat(cars.report()).isEqualTo("lsm:-\ntest:\n");
+
+            cars.move();
+            assertThat(cars.report()).isEqualTo("lsm:--\ntest:\n");
+        }
+    }
 }

@@ -27,4 +27,12 @@ public class Cars {
         }
         return result;
     }
+
+    public String report() {
+        StringBuffer result = new StringBuffer();
+        for (Car car : carList){
+            result.append(car.report()+"\n");
+        }
+        return result.toString();
+    }
 }
