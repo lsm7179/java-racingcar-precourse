@@ -6,9 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -48,11 +46,11 @@ public class WinnerTest {
 
             cars.move();
             Winner winner = new Winner(cars);
-            assertThat(winner.toString()).isEqualTo("최종 우승자는 lsm입니다.");
+            assertThat(winner.toString()).isEqualTo("최종 우승자는 lsm 입니다.");
 
             cars.move();
             winner = new Winner(cars);
-            assertThat(winner.toString()).isEqualTo("최종 우승자는 lsm,test입니다.");
+            assertThat(winner.toString()).isEqualTo("최종 우승자는 lsm,test 입니다.");
         }
     }
 

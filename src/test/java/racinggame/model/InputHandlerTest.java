@@ -84,7 +84,7 @@ public class InputHandlerTest {
         assertThat(inputHandler.toInt(input)).isEqualTo(Integer.parseInt(input));
     }
 
-    @DisplayName("시도 횟수를 정수 숫자만 가능하게 에러 처리")
+    @DisplayName("시도 횟수 에러 처리")
     @Test
     void notNumber() {
         assertThatThrownBy(() -> {
