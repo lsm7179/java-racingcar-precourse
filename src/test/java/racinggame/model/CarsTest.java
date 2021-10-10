@@ -1,6 +1,5 @@
 package racinggame.model;
 
-import nextstep.test.NSTest;
 import nextstep.utils.Randoms;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
@@ -23,20 +22,19 @@ public class CarsTest {
     @Test
     void createCarList() {
 
-        List<Car> carList = new ArrayList<Car>(Arrays.asList(new Car("lsm"), new Car("test")));
+        List<Car> carList = new ArrayList<>(Arrays.asList(new Car("lsm"), new Car("test")));
         Cars cars = new Cars(carList);
         assertThat(cars.getSize()).isEqualTo(2);
 
-        carList = new ArrayList<Car>(Arrays.asList(new Car("lsm"), new Car("test"), new Car("fox")));
+        carList = new ArrayList<>(Arrays.asList(new Car("lsm"), new Car("test"), new Car("fox")));
         cars = new Cars(carList);
         assertThat(cars.getSize()).isEqualTo(3);
     }
 
     @DisplayName("자동차들을 4이상에서 전진하는 기능 검증")
     @RepeatedTest(100)
-    @Test
     void moveCars() {
-        List<Car> carList = new ArrayList<Car>(Arrays.asList(new Car("lsm"), new Car("test"), new Car("fox")));
+        List<Car> carList = new ArrayList<>(Arrays.asList(new Car("lsm"), new Car("test"), new Car("fox")));
         Cars cars = new Cars(carList);
 
         try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
@@ -53,9 +51,8 @@ public class CarsTest {
 
     @DisplayName("자동차들을 3이하에서 멈추는 기능 검증")
     @RepeatedTest(100)
-    @Test
     void stopCars() {
-        List<Car> carList = new ArrayList<Car>(Arrays.asList(new Car("lsm"), new Car("test"), new Car("fox")));
+        List<Car> carList = new ArrayList<>(Arrays.asList(new Car("lsm"), new Car("test"), new Car("fox")));
         Cars cars = new Cars(carList);
 
         try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
@@ -73,7 +70,7 @@ public class CarsTest {
     @DisplayName("자동차들의 실행 결과를 출력하는 기능")
     @Test
     void CarsReport() {
-        List<Car> carList = new ArrayList<Car>(Arrays.asList(new Car("lsm"), new Car("test")));
+        List<Car> carList = new ArrayList<>(Arrays.asList(new Car("lsm"), new Car("test")));
         Cars cars = new Cars(carList);
         try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
             mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
@@ -86,4 +83,5 @@ public class CarsTest {
             assertThat(cars.report()).isEqualTo("lsm:--\ntest:\n");
         }
     }
+
 }

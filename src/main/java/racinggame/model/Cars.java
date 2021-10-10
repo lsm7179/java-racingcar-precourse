@@ -15,23 +15,23 @@ public class Cars {
     }
 
     public void move() {
-        for (Car car : carList){
+        for (Car car : carList) {
             car.goOrStop(RandomNumber.makeNumber());
         }
     }
 
-    public int getMaxDistance(){
+    public int getMaxDistance() {
         int result = 0;
-        for (Car car : carList){
-            result = Integer.max(car.getDistance(),result);
+        for (Car car : carList) {
+            result = Integer.max(car.getDistance(), result);
         }
         return result;
     }
 
     public String report() {
         StringBuffer result = new StringBuffer();
-        for (Car car : carList){
-            result.append(car.report()+"\n");
+        for (Car car : carList) {
+            result.append(car.report() + "\n");
         }
         return result.toString();
     }
