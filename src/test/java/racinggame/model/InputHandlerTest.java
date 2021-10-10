@@ -3,6 +3,8 @@ package racinggame.model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Arrays;
 
@@ -66,7 +68,7 @@ public class InputHandlerTest {
                 .hasMessageContaining("[ERROR]2명 이상 경주할 이름을 입력해주세요.");
     }
 
-    @DisplayName("같은 이름이 있을 때 처리.")
+    @DisplayName("같은 이름이 있을 때 처리")
     @Test
     void sameName() {
         assertThatThrownBy(() -> {
@@ -75,4 +77,24 @@ public class InputHandlerTest {
                 .hasMessageContaining("[ERROR]각각 다른 이름을 입력해주세요.");
     }
 
+    @DisplayName("시도 횟수 정상적으로 들어왔을 때 처리")
+    @ValueSource(strings = {"3","5"})
+    @ParameterizedTest
+    void toInt(String input) {
+        assertThat(inputHandler.toInt(input)).isEqualTo(Integer.parseInt(input));
+    }
+
+    @DisplayName("시도 횟수를 정수 숫자만 가능하게 에러 처리")
+    @Test
+    void notNumber() {
+        assertThatThrownBy(() -> {
+            inputHandler.toInt("lsm");
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR]2,147,483,647 이하의 양수만 입력해주세요.");
+
+        assertThatThrownBy(() -> {
+            inputHandler.toInt("3000000000");
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR]2,147,483,647 이하의 양수만 입력해주세요.");
+    }
 }

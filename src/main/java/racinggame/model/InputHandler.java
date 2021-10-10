@@ -90,4 +90,25 @@ public class InputHandler {
         }
         return result;
     }
+
+    public int toInt(String input) {
+        validateNotNumber(input);
+        return Integer.parseInt(input);
+    }
+
+    private void validateNotNumber(String input) {
+        try {
+            int number = Integer.parseInt(input);
+            validateNotPlus(number);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorMessage.NotNumber.toString());
+        }
+    }
+
+    private void validateNotPlus(int number) {
+        if (number <= 0) {
+            throw new IllegalArgumentException(ErrorMessage.NotNumber.toString());
+        }
+    }
+
 }
