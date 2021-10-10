@@ -1,6 +1,6 @@
 package racinggame.model;
 
-import racinggame.View.ErrorMessage;
+import racinggame.view.ErrorMessage;
 
 import java.util.ArrayList;
 import java.util.Arrays;

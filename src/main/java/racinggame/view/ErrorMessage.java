@@ -1,4 +1,4 @@
-package racinggame.View;
+package racinggame.view;
 
 public enum ErrorMessage {
 
