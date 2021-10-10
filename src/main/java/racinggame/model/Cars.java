@@ -14,4 +14,17 @@ public class Cars {
         return carList.size();
     }
 
+    public void move() {
+        for (Car car : carList){
+            car.goOrStop(RandomNumber.makeNumber());
+        }
+    }
+
+    public int getMaxDistance(){
+        int result = 0;
+        for (Car car : carList){
+            result = Integer.max(car.getDistance(),result);
+        }
+        return result;
+    }
 }
