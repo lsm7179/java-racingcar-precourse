@@ -51,4 +51,19 @@ public class CarTest {
 
     }
 
+    @DisplayName("차의 실행 결과를 출력하는 기능")
+    @Test
+    void ExecutionResult() {
+        Car car = new Car("lsm");
+        car.goOrStop(MOVING_FORWARD);
+        car.goOrStop(MOVING_FORWARD);
+        car.goOrStop(MOVING_FORWARD);
+        assertThat(car.report()).isEqualTo("lsm:---");
+
+        car = new Car("avant");
+        car.goOrStop(MOVING_FORWARD);
+        car.goOrStop(MOVING_FORWARD);
+        assertThat(car.report()).isEqualTo("avant:--");
+    }
+
 }

@@ -23,9 +23,21 @@ public class Car {
     }
 
     public void goOrStop(int number) {
-        if(number>= MOVING_FORWARD){
+        if (number >= MOVING_FORWARD) {
             this.go();
         }
+    }
+
+    public String report() {
+        return name + ":" + getDistanceReport();
+    }
+
+    private String getDistanceReport() {
+        StringBuffer distanceResult = new StringBuffer();
+        for (int i = 0; i < distance; i++) {
+            distanceResult.append("-");
+        }
+        return distanceResult.toString();
     }
 
 }
