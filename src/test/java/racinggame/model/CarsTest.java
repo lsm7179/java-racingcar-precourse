@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mockStatic;
 
-public class CarsTest{
+public class CarsTest {
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
 
@@ -23,11 +23,11 @@ public class CarsTest{
     @Test
     void createCarList() {
 
-        List<Car> carList = new ArrayList<Car>(Arrays.asList(new Car("lsm"),new Car("test")));
+        List<Car> carList = new ArrayList<Car>(Arrays.asList(new Car("lsm"), new Car("test")));
         Cars cars = new Cars(carList);
         assertThat(cars.getSize()).isEqualTo(2);
 
-        carList = new ArrayList<Car>(Arrays.asList(new Car("lsm"),new Car("test"),new Car("fox")));
+        carList = new ArrayList<Car>(Arrays.asList(new Car("lsm"), new Car("test"), new Car("fox")));
         cars = new Cars(carList);
         assertThat(cars.getSize()).isEqualTo(3);
     }
@@ -36,7 +36,7 @@ public class CarsTest{
     @RepeatedTest(100)
     @Test
     void moveCars() {
-        List<Car> carList = new ArrayList<Car>(Arrays.asList(new Car("lsm"),new Car("test"),new Car("fox")));
+        List<Car> carList = new ArrayList<Car>(Arrays.asList(new Car("lsm"), new Car("test"), new Car("fox")));
         Cars cars = new Cars(carList);
 
         try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
@@ -47,6 +47,25 @@ public class CarsTest{
 
             cars.move();
             assertThat(cars.getMaxDistance()).isEqualTo(2);
+        }
+
+    }
+
+    @DisplayName("자동차들을 3이하에서 멈추는 기능 검증")
+    @RepeatedTest(100)
+    @Test
+    void stopCars() {
+        List<Car> carList = new ArrayList<Car>(Arrays.asList(new Car("lsm"), new Car("test"), new Car("fox")));
+        Cars cars = new Cars(carList);
+
+        try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
+            mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
+                    .thenReturn(STOP);
+            cars.move();
+            assertThat(cars.getMaxDistance()).isEqualTo(0);
+
+            cars.move();
+            assertThat(cars.getMaxDistance()).isEqualTo(0);
         }
 
     }
