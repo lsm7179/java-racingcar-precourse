@@ -31,7 +31,7 @@ public class Winner {
 
     @Override
     public String toString() {
-        String result = "최종 우승자는 "+String.join(",",winnerList)+"입니다.";
+        String result = "최종 우승자는 "+String.join(",",winnerList)+" 입니다.";
 
         return result;
     }
