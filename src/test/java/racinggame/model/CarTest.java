@@ -9,15 +9,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.*;
 
 public class CarTest {
-
-    @DisplayName("차가 전진하는 기능 검증")
-    @Test
-    void go() {
-        Car car = new Car("");
-        car.go();
-
-        assertThat(car.getDistance()).isEqualTo(1);
-    }
+    private static final int MOVING_FORWARD = 4;
+    private static final int STOP = 3;
 
     @DisplayName("차에 이름을 부여하는 기능 검증")
     @ValueSource(strings = {"lsm","fox"})
@@ -30,17 +23,32 @@ public class CarTest {
 
     @DisplayName("입력값이 4이상이면 전진하는 기능 검증")
     @Test
-    void name() {
+    void carGo() {
         Car car = new Car("");
         assertThat(car.getDistance()).isEqualTo(0);
-        car.goOrStop(4);
+        car.goOrStop(MOVING_FORWARD);
         assertThat(car.getDistance()).isEqualTo(1);
 
         car = new Car("");
         assertThat(car.getDistance()).isEqualTo(0);
-        car.goOrStop(9);
+        car.goOrStop(MOVING_FORWARD);
         assertThat(car.getDistance()).isEqualTo(1);
 
+    }
+
+    @DisplayName("입력값이 3이하면 멈추는 기능 검증")
+    @Test
+    void carStop() {
+        Car car = new Car("");
+        assertThat(car.getDistance()).isEqualTo(0);
+        car.goOrStop(STOP);
+        assertThat(car.getDistance()).isEqualTo(0);
+
+        car = new Car("");
+        assertThat(car.getDistance()).isEqualTo(0);
+        car.goOrStop(STOP);
+        assertThat(car.getDistance()).isEqualTo(0);
 
     }
+
 }

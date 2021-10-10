@@ -10,7 +10,7 @@ public class Car {
         this.name = name;
     }
 
-    public void go() {
+    private void go() {
         distance++;
     }
 
@@ -27,4 +27,5 @@ public class Car {
             this.go();
         }
     }
+
 }
