@@ -4,7 +4,7 @@ public class Car {
 
     private String name;
     private int distance = 0;
-    private final int possibleGoNumber = 4;
+    private static final int MOVING_FORWARD = 4;
 
     public Car(String name) {
         this.name = name;
@@ -23,7 +23,7 @@ public class Car {
     }
 
     public void goOrStop(int number) {
-        if(number>=possibleGoNumber){
+        if(number>= MOVING_FORWARD){
             this.go();
         }
     }
