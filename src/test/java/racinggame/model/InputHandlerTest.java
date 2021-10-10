@@ -23,4 +23,56 @@ public class InputHandlerTest {
         assertThat(inputHandler.makeCarNames("lsm,star,test")).isEqualTo(Arrays.asList("lsm","star","test"));
         assertThat(inputHandler.makeCarNames("star,last")).isEqualTo(Arrays.asList("star","last"));
     }
+
+    @DisplayName("입력 값이 없을 때 처리")
+    @Test
+    void emptyValue() {
+        assertThatThrownBy(() -> {
+            inputHandler.makeCarNames("");
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR]입력 값이 없습니다.");
+    }
+
+    @DisplayName("이름이 비어있을 때 처리")
+    @Test
+    void emptyName() {
+        assertThatThrownBy(() -> {
+            inputHandler.makeCarNames(",lsm");
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR]이름이 비어있습니다.");
+
+        assertThatThrownBy(() -> {
+            inputHandler.makeCarNames("lsm, ,test");
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR]이름이 비어있습니다.");
+
+    }
+
+    @DisplayName("이름은 5글자 초과했을 때 처리")
+    @Test
+    void exceededCount() {
+        assertThatThrownBy(() -> {
+            inputHandler.makeCarNames("abc,defghi");
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR]5글자 이하만 입력해주세요.");
+    }
+
+    @DisplayName("한 명의 이름만 넣었을 때 처리")
+    @Test
+    void leastName() {
+        assertThatThrownBy(() -> {
+            inputHandler.makeCarNames("lsm");
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR]2명 이상 경주할 이름을 입력해주세요.");
+    }
+
+    @DisplayName("같은 이름이 있을 때 처리.")
+    @Test
+    void sameName() {
+        assertThatThrownBy(() -> {
+            inputHandler.makeCarNames("lsm,lsm");
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR]각각 다른 이름을 입력해주세요.");
+    }
+
 }
