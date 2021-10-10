@@ -77,10 +77,10 @@ public class CarsTest {
                     .thenReturn(MOVING_FORWARD,STOP,MOVING_FORWARD,STOP);
 
             cars.move();
-            assertThat(cars.report()).isEqualTo("lsm:-\ntest:\n");
+            assertThat(cars.toString()).isEqualTo("lsm:-\ntest:\n");
 
             cars.move();
-            assertThat(cars.report()).isEqualTo("lsm:--\ntest:\n");
+            assertThat(cars.toString()).isEqualTo("lsm:--\ntest:\n");
         }
     }
 

@@ -28,7 +28,12 @@ public class Car {
         }
     }
 
-    public String report() {
+    public boolean isMaxPosition(int maxDistance) {
+        return distance == maxDistance;
+    }
+
+    @Override
+    public String toString() {
         return name + ":" + getDistanceReport();
     }
 

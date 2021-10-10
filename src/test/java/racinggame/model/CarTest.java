@@ -58,12 +58,12 @@ public class CarTest {
         car.goOrStop(MOVING_FORWARD);
         car.goOrStop(MOVING_FORWARD);
         car.goOrStop(MOVING_FORWARD);
-        assertThat(car.report()).isEqualTo("lsm:---");
+        assertThat(car.toString()).isEqualTo("lsm:---");
 
         car = new Car("avant");
         car.goOrStop(MOVING_FORWARD);
         car.goOrStop(MOVING_FORWARD);
-        assertThat(car.report()).isEqualTo("avant:--");
+        assertThat(car.toString()).isEqualTo("avant:--");
     }
 
 }

@@ -28,11 +28,17 @@ public class Cars {
         return result;
     }
 
-    public String report() {
+    public List<Car> getCarList() {
+        return carList;
+    }
+
+    @Override
+    public String toString() {
         StringBuffer result = new StringBuffer();
         for (Car car : carList) {
-            result.append(car.report() + "\n");
+            result.append(car.toString() + "\n");
         }
         return result.toString();
     }
+
 }
