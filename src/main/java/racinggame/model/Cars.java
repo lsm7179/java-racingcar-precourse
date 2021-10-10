@@ -1,13 +1,21 @@
 package racinggame.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
 
     private List<Car> carList;
 
-    public Cars(List<Car> carList) {
-        this.carList = carList;
+    public Cars(List<String> carNames) {
+        carList = new ArrayList<>();
+        addCar(carNames);
+    }
+
+    private void addCar(List<String> carNames) {
+        for (int i = 0; i < carNames.size() ; i++) {
+            carList.add(new Car(carNames.get(i)));
+        }
     }
 
     public int getSize() {
