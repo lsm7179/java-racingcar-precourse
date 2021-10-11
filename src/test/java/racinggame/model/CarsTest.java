@@ -31,7 +31,7 @@ public class CarsTest {
     }
 
     @DisplayName("자동차들을 4이상에서 전진하는 기능 검증")
-    @RepeatedTest(100)
+    @Test
     void moveCars() {
         try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
             mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
@@ -46,7 +46,7 @@ public class CarsTest {
     }
 
     @DisplayName("자동차들을 3이하에서 멈추는 기능 검증")
-    @RepeatedTest(100)
+    @Test
     void stopCars() {
         try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
             mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
@@ -68,10 +68,10 @@ public class CarsTest {
                     .thenReturn(MOVING_FORWARD, STOP, MOVING_FORWARD, STOP);
 
             cars.move();
-            assertThat(cars.toString()).isEqualTo("lsm:-\ntest:\n");
+            assertThat(cars.toString()).isEqualTo("lsm : -\ntest : \n");
 
             cars.move();
-            assertThat(cars.toString()).isEqualTo("lsm:--\ntest:\n");
+            assertThat(cars.toString()).isEqualTo("lsm : --\ntest : \n");
         }
     }
 
