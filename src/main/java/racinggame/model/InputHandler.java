@@ -9,9 +9,10 @@ import java.util.List;
 
 public class InputHandler {
     private String input;
-    private final int MAX_NAME_SIZE = 5;
-    private final int LEAST_PERSON_COUNT = 2;
-    private final int DUPLICATE_NAMES = 1;
+    private static final int MAX_NAME_SIZE = 5;
+    private static final int LEAST_PERSON_COUNT = 2;
+    private static final int DUPLICATE_NAMES = 1;
+    private static final String SPLIT_WORD = ",";
 
     public List makeCarNames(String input) {
         this.input = input;
@@ -28,7 +29,7 @@ public class InputHandler {
     }
 
     private void validateSameNames() {
-        String[] validate = input.split(",");
+        String[] validate = input.split(SPLIT_WORD);
         List<String> arrayList = Arrays.asList(validate);
         for (int i = 0; i < validate.length; i++) {
             validateSameName(validate[i], arrayList);
@@ -47,13 +48,13 @@ public class InputHandler {
     }
 
     private void validateLeastName() {
-        if (input.split(",").length < LEAST_PERSON_COUNT) {
+        if (input.split(SPLIT_WORD).length < LEAST_PERSON_COUNT) {
             throw new IllegalArgumentException(ErrorMessage.LeastName.toString());
         }
     }
 
     private void validateExceededCounts() {
-        String[] validate = input.split(",");
+        String[] validate = input.split(SPLIT_WORD);
         for (int i = 0; i < validate.length; i++) {
             validateExceededCount(validate[i].trim());
         }
@@ -66,7 +67,7 @@ public class InputHandler {
     }
 
     private void validateEmptyNames() {
-        String[] validate = input.split(",");
+        String[] validate = input.split(SPLIT_WORD);
         for (int i = 0; i < validate.length; i++) {
             validateEmptyName(validate[i].trim());
         }
@@ -87,7 +88,7 @@ public class InputHandler {
 
     private List addNames() {
         List<String> result = new ArrayList<>();
-        String name[] = input.split(",");
+        String name[] = input.split(SPLIT_WORD);
         for (int i = 0; i < name.length; i++) {
             result.add(name[i]);
         }
