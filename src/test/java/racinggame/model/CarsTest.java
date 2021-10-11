@@ -74,5 +74,4 @@ public class CarsTest {
             assertThat(cars.toString()).isEqualTo("lsm : --\ntest : \n");
         }
     }
-
 }

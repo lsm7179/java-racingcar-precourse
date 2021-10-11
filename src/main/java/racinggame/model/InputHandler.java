@@ -113,5 +113,4 @@ public class InputHandler {
             throw new IllegalArgumentException(ErrorMessage.NotNumber.toString());
         }
     }
-
 }

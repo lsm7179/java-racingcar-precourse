@@ -53,5 +53,4 @@ public class WinnerTest {
             assertThat(winner.toString()).isEqualTo("최종 우승자는 lsm,test 입니다.");
         }
     }
-
 }

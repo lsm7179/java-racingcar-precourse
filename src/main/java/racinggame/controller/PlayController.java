@@ -55,5 +55,4 @@ public class PlayController {
         Winner win = new Winner(cars);
         View.printMessage(win.toString());
     }
-
 }

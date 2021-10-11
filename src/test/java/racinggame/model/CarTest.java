@@ -65,5 +65,4 @@ public class CarTest {
         car.goOrStop(MOVING_FORWARD);
         assertThat(car.toString()).isEqualTo("avant : --");
     }
-
 }

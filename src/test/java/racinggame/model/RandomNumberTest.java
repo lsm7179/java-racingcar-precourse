@@ -19,6 +19,5 @@ public class RandomNumberTest {
 
         assertThat(result > 10).isEqualTo(false);
         assertThat(result < 0).isEqualTo(false);
-
     }
 }
