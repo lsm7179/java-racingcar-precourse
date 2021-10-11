@@ -5,6 +5,7 @@ public class Car {
     private String name;
     private int distance = 0;
     private static final int MOVING_FORWARD = 4;
+    private static final String DISTANCE_EXPRESSION = "-";
 
     public Car(String name) {
         this.name = name;
@@ -40,7 +41,7 @@ public class Car {
     private String getDistanceReport() {
         StringBuffer distanceResult = new StringBuffer();
         for (int i = 0; i < distance; i++) {
-            distanceResult.append("-");
+            distanceResult.append(DISTANCE_EXPRESSION);
         }
         return distanceResult.toString();
     }
