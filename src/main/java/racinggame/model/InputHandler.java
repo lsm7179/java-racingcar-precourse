@@ -34,13 +34,13 @@ public class InputHandler {
     }
 
     private void validateSameName(String name, List<String> arrayList) {
-        if(isSameName(name, arrayList)){
+        if (isSameName(name, arrayList)) {
             throw new IllegalArgumentException(ErrorMessage.SameName.toString());
         }
     }
 
     private boolean isSameName(String name, List<String> arrayList) {
-        return Collections.frequency(arrayList,name)>1;
+        return Collections.frequency(arrayList, name) > 1;
     }
 
     private void validateLeastName() {
@@ -65,11 +65,11 @@ public class InputHandler {
     private void validateEmptyNames() {
         String[] validate = input.split(",");
         for (int i = 0; i < validate.length; i++) {
-            validataEmptyName(validate[i].trim());
+            validateEmptyName(validate[i].trim());
         }
     }
 
-    private void validataEmptyName(String names) {
+    private void validateEmptyName(String names) {
         if (names.length() <= 0) {
             throw new IllegalArgumentException(ErrorMessage.EmptyName.toString());
         }

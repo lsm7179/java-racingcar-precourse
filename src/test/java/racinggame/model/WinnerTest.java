@@ -27,7 +27,7 @@ public class WinnerTest {
     void selectWinner() {
         try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
             mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
-                    .thenReturn(MOVING_FORWARD,STOP,MOVING_FORWARD,STOP);
+                    .thenReturn(MOVING_FORWARD, STOP, MOVING_FORWARD, STOP);
 
             cars.move();
             cars.move();
@@ -42,7 +42,7 @@ public class WinnerTest {
     void winnerReport() {
         try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
             mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
-                    .thenReturn(MOVING_FORWARD,STOP,STOP,MOVING_FORWARD);
+                    .thenReturn(MOVING_FORWARD, STOP, STOP, MOVING_FORWARD);
 
             cars.move();
             Winner winner = new Winner(cars);

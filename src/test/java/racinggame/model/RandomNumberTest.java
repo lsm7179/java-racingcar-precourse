@@ -14,11 +14,11 @@ public class RandomNumberTest {
     void randomNumberMake() {
         int result = RandomNumber.makeNumber();
 
-        assertThat(result<=9).isEqualTo(true);
-        assertThat(result>=0).isEqualTo(true);
+        assertThat(result <= 9).isEqualTo(true);
+        assertThat(result >= 0).isEqualTo(true);
 
-        assertThat(result>10).isEqualTo(false);
-        assertThat(result<0).isEqualTo(false);
+        assertThat(result > 10).isEqualTo(false);
+        assertThat(result < 0).isEqualTo(false);
 
     }
 }

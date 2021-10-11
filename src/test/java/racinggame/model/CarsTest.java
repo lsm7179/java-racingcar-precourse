@@ -65,7 +65,7 @@ public class CarsTest {
     void CarsReport() {
         try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
             mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
-                    .thenReturn(MOVING_FORWARD,STOP,MOVING_FORWARD,STOP);
+                    .thenReturn(MOVING_FORWARD, STOP, MOVING_FORWARD, STOP);
 
             cars.move();
             assertThat(cars.toString()).isEqualTo("lsm:-\ntest:\n");

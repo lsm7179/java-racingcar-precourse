@@ -16,44 +16,44 @@ public class PlayController {
 
     }
 
-    public void start(){
+    public void start() {
         View.printInputCarNames();
         nameInput();
         View.printInputCount();
         play(countInput());
     }
 
-    private void nameInput(){
-        try{
+    private void nameInput() {
+        try {
             String carNames = Console.readLine();
             cars = new Cars(inputHandler.makeCarNames(carNames));
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             View.print(e.getMessage());
             nameInput();
         }
 
     }
 
-    private int countInput(){
-        try{
+    private int countInput() {
+        try {
             String count = Console.readLine();
             return inputHandler.toInt(count);
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             View.print(e.getMessage());
             return countInput();
         }
     }
 
-    private void play(int count){
+    private void play(int count) {
         View.printPlay();
-        while(count-- > 0){
+        while (count-- > 0) {
             cars.move();
             View.print(cars.toString());
         }
         win();
     }
 
-    private void win(){
+    private void win() {
         Winner win = new Winner(cars);
         View.print(win.toString());
     }

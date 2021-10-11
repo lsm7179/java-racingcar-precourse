@@ -8,6 +8,6 @@ public class RandomNumber {
     private static final int TO_NUMBER = 9;
 
     public static int makeNumber() {
-        return Randoms.pickNumberInRange(FROM_NUMBER,TO_NUMBER);
+        return Randoms.pickNumberInRange(FROM_NUMBER, TO_NUMBER);
     }
 }

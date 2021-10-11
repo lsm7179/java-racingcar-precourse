@@ -6,19 +6,19 @@ public class View {
     private static final String INPUT_COUNT = "시도할 회수는 몇회인가요?";
     private static final String PLAY = "실행결과";
 
-    public static void printInputCarNames(){
+    public static void printInputCarNames() {
         System.out.println(INPUT_CAR_NAMES);
     }
 
-    public static void printInputCount(){
+    public static void printInputCount() {
         System.out.println(INPUT_COUNT);
     }
 
-    public static void printPlay(){
+    public static void printPlay() {
         System.out.println(PLAY);
     }
 
-    public static void print(String message){
+    public static void print(String message) {
         System.out.println(message);
     }
 
