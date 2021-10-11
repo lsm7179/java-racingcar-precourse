@@ -14,14 +14,6 @@ public class Car {
         distance++;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getDistance() {
-        return distance;
-    }
-
     public void goOrStop(int number) {
         if (number >= MOVING_FORWARD) {
             this.go();
@@ -30,6 +22,14 @@ public class Car {
 
     public boolean isMaxPosition(int maxDistance) {
         return distance == maxDistance;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getDistance() {
+        return distance;
     }
 
     @Override

@@ -18,7 +18,7 @@ public class View {
         System.out.println(PLAY);
     }
 
-    public static void print(String message) {
+    public static void printMessage(String message) {
         System.out.println(message);
     }
 

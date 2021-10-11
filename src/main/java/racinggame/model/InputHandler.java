@@ -9,6 +9,9 @@ import java.util.List;
 
 public class InputHandler {
     private String input;
+    private final int MAX_NAME_SIZE = 5;
+    private final int LEAST_PERSON_COUNT = 2;
+    private final int DUPLICATE_NAMES = 1;
 
     public List makeCarNames(String input) {
         this.input = input;
@@ -40,11 +43,11 @@ public class InputHandler {
     }
 
     private boolean isSameName(String name, List<String> arrayList) {
-        return Collections.frequency(arrayList, name) > 1;
+        return Collections.frequency(arrayList, name) > DUPLICATE_NAMES;
     }
 
     private void validateLeastName() {
-        if (input.split(",").length <= 1) {
+        if (input.split(",").length < LEAST_PERSON_COUNT) {
             throw new IllegalArgumentException(ErrorMessage.LeastName.toString());
         }
     }
@@ -57,7 +60,7 @@ public class InputHandler {
     }
 
     private void validateExceededCount(String name) {
-        if (name.length() > 5) {
+        if (name.length() > MAX_NAME_SIZE) {
             throw new IllegalArgumentException(ErrorMessage.ExceededCount.toString());
         }
     }

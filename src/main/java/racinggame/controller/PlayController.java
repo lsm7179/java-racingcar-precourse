@@ -13,7 +13,6 @@ public class PlayController {
 
     public PlayController() {
         this.inputHandler = new InputHandler();
-
     }
 
     public void start() {
@@ -28,10 +27,9 @@ public class PlayController {
             String carNames = Console.readLine();
             cars = new Cars(inputHandler.makeCarNames(carNames));
         } catch (IllegalArgumentException e) {
-            View.print(e.getMessage());
+            View.printMessage(e.getMessage());
             nameInput();
         }
-
     }
 
     private int countInput() {
@@ -39,7 +37,7 @@ public class PlayController {
             String count = Console.readLine();
             return inputHandler.toInt(count);
         } catch (IllegalArgumentException e) {
-            View.print(e.getMessage());
+            View.printMessage(e.getMessage());
             return countInput();
         }
     }
@@ -48,14 +46,14 @@ public class PlayController {
         View.printPlay();
         while (count-- > 0) {
             cars.move();
-            View.print(cars.toString());
+            View.printMessage(cars.toString());
         }
         win();
     }
 
     private void win() {
         Winner win = new Winner(cars);
-        View.print(win.toString());
+        View.printMessage(win.toString());
     }
 
 }
